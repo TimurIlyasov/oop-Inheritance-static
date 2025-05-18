@@ -1,0 +1,55 @@
+package zoo;
+
+/**
+ * Хищные млекопитающие.
+ * Добавляет параметр типа пищи и метод охоты.
+ */
+public class Predator extends Mammal {
+    private String foodType;
+
+    public Predator(String name, int age, String habitat, int speed, String foodType) {
+        super(name, age, habitat, speed);
+        setFoodType(foodType);
+    }
+
+    public String getFoodType() {
+        return foodType;
+    }
+
+    public void setFoodType(String foodType) {
+        if (foodType == null || foodType.isBlank()) {
+            this.foodType = "мясо";
+        } else {
+            this.foodType = foodType;
+        }
+    }
+
+    // Метод охоты
+    public void hunt() {
+        System.out.println(getName() + " охотится на " + foodType);
+    }
+
+    // Переопределяем eat
+    @Override
+    public void eat() {
+        hunt();
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() + ", тип пищи: " + foodType;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (!super.equals(o)) return false;
+        if (!(o instanceof Predator)) return false;
+        Predator p = (Predator) o;
+        return foodType.equalsIgnoreCase(p.foodType);
+    }
+
+    @Override
+    public int hashCode() {
+        return super.hashCode() + foodType.toLowerCase().hashCode();
+    }
+}

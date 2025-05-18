@@ -1,0 +1,12 @@
+package animals.birds;
+
+public class Peacock extends FlightlessBird {
+    public Peacock(String name, int age, String livingEnvironment, String moveType) {
+        super(name, age, livingEnvironment, moveType);
+    }
+
+    @Override
+    public String toString() {
+        return "Peacock: " + super.toString();
+    }
+}

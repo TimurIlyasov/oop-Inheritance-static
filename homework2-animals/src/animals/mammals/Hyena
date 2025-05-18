@@ -1,0 +1,12 @@
+package animals.mammals;
+
+public class Hyena extends Predator {
+    public Hyena(String name, int age, String livingEnvironment, int speed, String foodType) {
+        super(name, age, livingEnvironment, speed, foodType);
+    }
+
+    @Override
+    public String toString() {
+        return "Hyena: " + super.toString();
+    }
+}

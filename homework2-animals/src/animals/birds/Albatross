@@ -1,0 +1,12 @@
+package animals.birds;
+
+public class Albatross extends FlyingBird {
+    public Albatross(String name, int age, String livingEnvironment, String moveType) {
+        super(name, age, livingEnvironment, moveType);
+    }
+
+    @Override
+    public String toString() {
+        return "Albatross: " + super.toString();
+    }
+}

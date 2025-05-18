@@ -1,0 +1,60 @@
+package zoo;
+
+/**
+ * Класс Птица наследуется от Animal.
+ * Добавляет параметр среды обитания.
+ * Метод охоты.
+ */
+public abstract class Bird extends Animal {
+    private String habitat;
+
+    public Bird(String name, int age, String habitat) {
+        super(name, age);
+        setHabitat(habitat);
+    }
+
+    public String getHabitat() {
+        return habitat;
+    }
+
+    public void setHabitat(String habitat) {
+        if (habitat == null || habitat.isBlank()) {
+            this.habitat = "default";
+        } else {
+            this.habitat = habitat;
+        }
+    }
+
+    // Метод охоты (может быть переопределен)
+    public void hunt() {
+        System.out.println(getName() + " охотится");
+    }
+
+    @Override
+    public void eat() {
+        System.out.println(getName() + " ест");
+    }
+
+    @Override
+    public void move() {
+        System.out.println(getName() + " перемещается");
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() + ", среда: " + habitat;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (!super.equals(o)) return false;
+        if (!(o instanceof Bird)) return false;
+        Bird bird = (Bird) o;
+        return habitat.equalsIgnoreCase(bird.habitat);
+    }
+
+    @Override
+    public int hashCode() {
+        return super.hashCode() + habitat.toLowerCase().hashCode();
+    }
+}

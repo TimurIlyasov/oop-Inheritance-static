@@ -1,0 +1,12 @@
+package animals.birds;
+
+public class Penguin extends FlightlessBird {
+    public Penguin(String name, int age, String livingEnvironment, String moveType) {
+        super(name, age, livingEnvironment, moveType);
+    }
+
+    @Override
+    public String toString() {
+        return "Penguin: " + super.toString();
+    }
+}

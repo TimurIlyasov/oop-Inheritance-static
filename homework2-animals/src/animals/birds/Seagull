@@ -1,0 +1,13 @@
+package animals.birds;
+
+public class Seagull extends FlyingBird {
+    public Seagull(String name, int age, String livingEnvironment, String moveType) {
+        super(name, age, livingEnvironment, moveType);
+    }
+
+    @Override
+    public String toString() {
+        return "Seagull: " + super.toString();
+    }
+}
+

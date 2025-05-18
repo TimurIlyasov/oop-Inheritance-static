@@ -1,0 +1,12 @@
+package animals.amphibians;
+
+public class Snake extends Amphibian {
+    public Snake(String name, int age, String livingEnvironment) {
+        super(name, age, livingEnvironment);
+    }
+
+    @Override
+    public String toString() {
+        return "Snake: " + super.toString();
+    }
+}

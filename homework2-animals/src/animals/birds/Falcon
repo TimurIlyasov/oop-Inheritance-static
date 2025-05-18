@@ -1,0 +1,12 @@
+package animals.birds;
+
+public class Falcon extends FlyingBird {
+    public Falcon(String name, int age, String livingEnvironment, String moveType) {
+        super(name, age, livingEnvironment, moveType);
+    }
+
+    @Override
+    public String toString() {
+        return "Falcon: " + super.toString();
+    }
+}

@@ -1,0 +1,72 @@
+package zoo;
+
+import java.util.Objects;
+
+/**
+ * Абстрактный базовый класс для всех животных.
+ * Содержит основные параметры: кличка и возраст.
+ * Определяет базовые методы: есть, спать и перемещаться.
+ */
+public abstract class Animal {
+    private String name;  // Кличка животного
+    private int age;      // Возраст в годах
+
+    // Конструктор с проверками параметров
+    public Animal(String name, int age) {
+        setName(name);
+        setAge(age);
+    }
+
+    // Геттер и сеттер для имени с проверкой (не null и не пустая строка)
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        if (name == null || name.isBlank()) {
+            this.name = "default";
+        } else {
+            this.name = name;
+        }
+    }
+
+    // Геттер и сеттер для возраста с проверкой (неотрицательный)
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = (age < 0) ? 0 : age;
+    }
+
+    // Абстрактный метод "кушать", обязателен к переопределению у потомков
+    public abstract void eat();
+
+    // Метод "спать" — реализован базово
+    public void sleep() {
+        System.out.println(name + " спит");
+    }
+
+    // Абстрактный метод перемещения, будет по-разному реализован у разных животных
+    public abstract void move();
+
+    // Переопределяем toString для вывода полной информации о животном
+    @Override
+    public String toString() {
+        return String.format("%s, возраст: %d", name, age);
+    }
+
+    // Переопределяем equals для проверки уникальности животных по имени и возрасту
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Animal)) return false;
+        Animal animal = (Animal) o;
+        return age == animal.age && name.equalsIgnoreCase(animal.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name.toLowerCase(), age);
+    }
+}

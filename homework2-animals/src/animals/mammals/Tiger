@@ -1,0 +1,12 @@
+package animals.mammals;
+
+public class Tiger extends Predator {
+    public Tiger(String name, int age, String livingEnvironment, int speed, String foodType) {
+        super(name, age, livingEnvironment, speed, foodType);
+    }
+
+    @Override
+    public String toString() {
+        return "Tiger: " + super.toString();
+    }
+}

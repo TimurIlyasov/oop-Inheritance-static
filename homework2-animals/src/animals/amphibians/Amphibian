@@ -1,0 +1,60 @@
+package zoo;
+
+/**
+ * Класс Земноводное наследуется от Animal.
+ * Добавляет параметр среды обитания.
+ * Метод охоты.
+ */
+public class Amphibian extends Animal {
+    private String habitat;
+
+    public Amphibian(String name, int age, String habitat) {
+        super(name, age);
+        setHabitat(habitat);
+    }
+
+    public String getHabitat() {
+        return habitat;
+    }
+
+    public void setHabitat(String habitat) {
+        if (habitat == null || habitat.isBlank()) {
+            this.habitat = "default";
+        } else {
+            this.habitat = habitat;
+        }
+    }
+
+    // Метод охоты для земноводных
+    public void hunt() {
+        System.out.println(getName() + " охотится");
+    }
+
+    @Override
+    public void eat() {
+        System.out.println(getName() + " ест");
+    }
+
+    @Override
+    public void move() {
+        System.out.println(getName() + " перемещается прыжками");
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() + ", среда: " + habitat;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (!super.equals(o)) return false;
+        if (!(o instanceof Amphibian)) return false;
+        Amphibian that = (Amphibian) o;
+        return habitat.equalsIgnoreCase(that.habitat);
+    }
+
+    @Override
+    public int hashCode() {
+        return super.hashCode() + habitat.toLowerCase().hashCode();
+    }
+}

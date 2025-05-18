@@ -1,0 +1,57 @@
+import animals.Animal;
+import animals.mammals.*;
+import animals.amphibians.*;
+import animals.birds.*;
+
+public class Main {
+    public static void main(String[] args) {
+        // Создание объектов травоядных
+        Gazelle gazelle = new Gazelle("Гриша", 4, "саванна", 60, "трава");
+        Giraffe giraffe = new Giraffe("Жора", 7, "саванна", 40, "листья");
+        Horse horse = new Horse("Буцефал", 5, "луг", 55, "сено");
+
+        // Создание объектов хищников
+        Hyena hyena = new Hyena("Гоша", 6, "саванна", 50, "мясо");
+        Tiger tiger = new Tiger("Шерхан", 10, "джунгли", 60, "мясо");
+        Bear bear = new Bear("Миша", 8, "лес", 35, "рыба");
+
+        // Создание объектов земноводных
+        Frog frog = new Frog("Квакша", 1, "болото");
+        Snake snake = new Snake("Ужик", 3, "река");
+
+        // Создание нелетающих птиц
+        Peacock peacock = new Peacock("Павлуша", 3, "джунгли", "ходьба");
+        Penguin penguin = new Penguin("Пингвинчик", 2, "Антарктика", "плавание");
+        Dodo dodo = new Dodo("Додо", 5, "острова", "ходьба");
+
+        // Создание летающих птиц
+        Seagull seagull = new Seagull("Чайка", 4, "море", "полет");
+        Albatross albatross = new Albatross("Альби", 6, "океан", "полет");
+        Falcon falcon = new Falcon("Сокол", 3, "горы", "полет");
+
+        // Вывод информации
+        printAnimalInfo(gazelle);
+        printAnimalInfo(hyena);
+        printAnimalInfo(frog);
+        printAnimalInfo(peacock);
+        printAnimalInfo(seagull);
+
+        // Проверка equals
+        Gazelle gazelle2 = new Gazelle("Гриша", 4, "саванна", 60, "трава");
+        System.out.println("Gazelle equals Gazelle2? " + compareAnimals(gazelle, gazelle2));
+        System.out.println("Tiger equals Bear? " + compareAnimals(tiger, bear));
+    }
+
+    public static void printAnimalInfo(Animal animal) {
+        System.out.println(animal);
+        animal.go();
+        animal.eat();
+        animal.sleep();
+        System.out.println("Класс: " + animal.getClass().getSimpleName());
+        System.out.println("===========================");
+    }
+
+    public static boolean compareAnimals(Animal a1, Animal a2) {
+        return a1.equals(a2);
+    }
+}

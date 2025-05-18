@@ -1,0 +1,55 @@
+package zoo;
+
+/**
+ * Травоядные млекопитающие.
+ * Добавляет параметр типа пищи и метод пастись.
+ */
+public class Herbivore extends Mammal {
+    private String foodType;
+
+    public Herbivore(String name, int age, String habitat, int speed, String foodType) {
+        super(name, age, habitat, speed);
+        setFoodType(foodType);
+    }
+
+    public String getFoodType() {
+        return foodType;
+    }
+
+    public void setFoodType(String foodType) {
+        if (foodType == null || foodType.isBlank()) {
+            this.foodType = "трава";
+        } else {
+            this.foodType = foodType;
+        }
+    }
+
+    // Метод пастись
+    public void graze() {
+        System.out.println(getName() + " пасется на " + foodType);
+    }
+
+    // Переопределяем метод eat()
+    @Override
+    public void eat() {
+        graze();
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() + ", тип пищи: " + foodType;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (!super.equals(o)) return false;
+        if (!(o instanceof Herbivore)) return false;
+        Herbivore h = (Herbivore) o;
+        return foodType.equalsIgnoreCase(h.foodType);
+    }
+
+    @Override
+    public int hashCode() {
+        return super.hashCode() + foodType.toLowerCase().hashCode();
+    }
+}

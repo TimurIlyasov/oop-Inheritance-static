@@ -1,0 +1,72 @@
+package zoo;
+
+/**
+ * Класс Млекопитающее наследуется от Animal.
+ * Добавляет параметры среды обитания и скорости.
+ * Добавляет метод walk() (гулять).
+ */
+public abstract class Mammal extends Animal {
+    private String habitat;  // Среда обитания
+    private int speed;       // Скорость перемещения (км/ч)
+
+    public Mammal(String name, int age, String habitat, int speed) {
+        super(name, age);
+        setHabitat(habitat);
+        setSpeed(speed);
+    }
+
+    public String getHabitat() {
+        return habitat;
+    }
+
+    public void setHabitat(String habitat) {
+        if (habitat == null || habitat.isBlank()) {
+            this.habitat = "default";
+        } else {
+            this.habitat = habitat;
+        }
+    }
+
+    public int getSpeed() {
+        return speed;
+    }
+
+    public void setSpeed(int speed) {
+        this.speed = Math.max(speed, 0);
+    }
+
+    // Метод гулять
+    public void walk() {
+        System.out.println(getName() + " гуляет со скоростью " + speed + " км/ч");
+    }
+
+    // Метод перемещения реализуем как ходьбу
+    @Override
+    public void move() {
+        walk();
+    }
+
+    // Метод кушать оставим абстрактным, чтобы потом реализовать в конкретных классах
+    @Override
+    public abstract void eat();
+
+    // toString с добавлением habitat и speed
+    @Override
+    public String toString() {
+        return super.toString() + ", среда: " + habitat + ", скорость: " + speed + " км/ч";
+    }
+
+    // equals — учитываем родительские поля + habitat и speed
+    @Override
+    public boolean equals(Object o) {
+        if (!super.equals(o)) return false;
+        if (!(o instanceof Mammal)) return false;
+        Mammal mammal = (Mammal) o;
+        return speed == mammal.speed && habitat.equalsIgnoreCase(mammal.habitat);
+    }
+
+    @Override
+    public int hashCode() {
+        return super.hashCode() + habitat.toLowerCase().hashCode() + speed;
+    }
+}

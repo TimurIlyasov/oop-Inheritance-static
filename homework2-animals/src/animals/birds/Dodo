@@ -1,0 +1,12 @@
+package animals.birds;
+
+public class Dodo extends FlightlessBird {
+    public Dodo(String name, int age, String livingEnvironment, String moveType) {
+        super(name, age, livingEnvironment, moveType);
+    }
+
+    @Override
+    public String toString() {
+        return "Dodo: " + super.toString();
+    }
+}

@@ -1,0 +1,46 @@
+// Класс FlyingBird наследуется от Bird и представляет летающих птиц
+public class FlyingBird extends Bird {
+
+    // Поле для указания высоты полета в метрах
+    private int flightHeight;
+
+    // Конструктор класса FlyingBird
+    public FlyingBird(String name, double weight, double wingSpan, int flightHeight) {
+        // Вызов конструктора суперкласса Bird
+        super(name, weight, wingSpan);
+        this.flightHeight = flightHeight;
+    }
+
+    // Геттер для высоты полета
+    public int getFlightHeight() {
+        return flightHeight;
+    }
+
+    // Сеттер для высоты полета
+    public void setFlightHeight(int flightHeight) {
+        this.flightHeight = flightHeight;
+    }
+
+    // Переопределение метода makeSound
+    @Override
+    public void makeSound() {
+        System.out.println(getName() + " поёт красивую песню в небе!");
+    }
+
+    // Метод для полёта
+    public void fly() {
+        System.out.println(getName() + " летит на высоте " + flightHeight + " метров.");
+    }
+
+    // Переопределение метода move
+    @Override
+    public void move() {
+        fly(); // Для летающих птиц перемещение — это полёт
+    }
+
+    // Переопределение метода eat (на случай особых пищевых привычек)
+    @Override
+    public void eat() {
+        System.out.println(getName() + " клюёт семена и насекомых.");
+    }
+}
