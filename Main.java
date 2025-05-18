@@ -10,11 +10,15 @@ public class Main {
                 "Ласточка", "B-901", 2011, "Россия", "красный", 301,
                 3500, 4.5, "Белорусский вокзал", "Минск-Пассажирский", 11
         );
-
         Train leningrad = new Train(
                 "Ленинград", "D-125", 2019, "Россия", "синий", 270,
                 1700, 3.2, "Ленинградский вокзал", "Ленинград-Пассажирский", 8
         );
+
+        // Автобусы
+        Bus mersedesBus = new Bus("Mercedes-Benz", "Citaro", 2018, "Германия", "белый", 120);
+        Bus liazBus = new Bus("ЛиАЗ", "5292", 2016, "Россия", "синий", 90);
+        Bus ikarusBus = new Bus("Ikarus", "280", 1993, "Венгрия", "красный", 75);
 
         // Вывод
         System.out.println("Автомобили:");
@@ -25,5 +29,10 @@ public class Main {
         System.out.println("\nПоезда:");
         System.out.println(lastochka);
         System.out.println(leningrad);
+
+        System.out.println("\nАвтобусы:");
+        System.out.println(mersedesBus);
+        System.out.println(liazBus);
+        System.out.println(ikarusBus);
     }
 }
