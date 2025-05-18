@@ -1,3 +1,8 @@
+package src;
+
+import src.transports.Car;
+import src.transports.Train;
+import src.transports.Bus;
 public class Main {
     public static void main(String[] args) {
         // Автомобили

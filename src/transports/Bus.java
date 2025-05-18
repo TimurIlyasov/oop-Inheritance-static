@@ -1,3 +1,5 @@
+package Transports;
+
 /**
  * Класс Bus представляет автобус, расширяет Transport.
  */
