@@ -1,62 +1,52 @@
 package src.transports;
-/**
- * Класс Transport представляет базовый транспорт с общими характеристиками.
- */
-public class Transport {
+
+public abstract class Transport {
     private final String brand;
     private final String model;
     private final int year;
     private final String country;
     private String color;
     private int maxSpeed;
+    protected double fuelPercentage; // поле для наследников
 
-    /**
-     * Конструктор для класса Transport
-     */
-    public Transport(String brand, String model, int year, String country, String color, int maxSpeed) {
-        this.brand = brand;
-        this.model = model;
+    public Transport(String brand, String model, int year, String country, String color, int maxSpeed, double fuelPercentage) {
+        this.brand = checkString(brand);
+        this.model = checkString(model);
         this.year = year;
-        this.country = country;
+        this.country = checkString(country);
         setColor(color);
         setMaxSpeed(maxSpeed);
+        setFuelPercentage(fuelPercentage);
     }
 
-    public String getBrand() {
-        return brand;
+    public double getFuelPercentage() {
+        return fuelPercentage;
     }
 
-    public String getModel() {
-        return model;
-    }
-
-    public int getYear() {
-        return year;
-    }
-
-    public String getCountry() {
-        return country;
-    }
-
-    public String getColor() {
-        return color;
+    protected void setFuelPercentage(double fuelPercentage) {
+        if (fuelPercentage < 0 || fuelPercentage > 100) {
+            this.fuelPercentage = 100.0;
+        } else {
+            this.fuelPercentage = fuelPercentage;
+        }
     }
 
     public void setColor(String color) {
-        this.color = (color == null || color.isBlank()) ? "белый" : color;
-    }
-
-    public int getMaxSpeed() {
-        return maxSpeed;
+        this.color = checkString(color);
     }
 
     public void setMaxSpeed(int maxSpeed) {
-        this.maxSpeed = (maxSpeed <= 0) ? 100 : maxSpeed;
+        this.maxSpeed = Math.max(maxSpeed, 0);
+    }
+
+    protected static String checkString(String value) {
+        return (value == null || value.isBlank()) ? "default" : value;
     }
 
     @Override
     public String toString() {
-        return String.format("%s %s, %d года, страна %s, цвет %s, макс. скорость %d км/ч",
-                brand, model, year, country, color, maxSpeed);
+        return brand + " " + model + ", " + year + " г., " + country + ", цвет: " + color + ", макс. скорость: " + maxSpeed + " км/ч, топливо: " + fuelPercentage + "%";
     }
+
+    public abstract void refill();
 }

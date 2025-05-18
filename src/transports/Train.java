@@ -1,4 +1,4 @@
-package Transports;
+package src.transports;
 
 /**
  * Класс Train представляет поезд, расширяет Transport и добавляет специфические параметры.
@@ -11,8 +11,9 @@ public class Train extends Transport {
     private int carriageCount;
 
     public Train(String brand, String model, int year, String country, String color, int maxSpeed,
-                 double price, double travelTime, String departureStation, String arrivalStation, int carriageCount) {
-        super(brand, model, year, country, color, maxSpeed);
+                 double price, double travelTime, String departureStation, String arrivalStation,
+                 int carriageCount, double fuelPercentage) {
+        super(brand, model, year, country, color, maxSpeed, fuelPercentage); // добавлен fuelPercentage
         setPrice(price);
         setTravelTime(travelTime);
         setDepartureStation(departureStation);
@@ -63,8 +64,14 @@ public class Train extends Transport {
     }
 
     @Override
+    public void refill() {
+        System.out.println("Поезд заправляется дизелем.");
+        setFuelPercentage(100.0);
+    }
+
+    @Override
     public String toString() {
-        return String.format("%s, цена: %.0f руб., время поездки: %.1f ч, от: %s, до: %s, вагонов: %d",
-                super.toString(), price, travelTime, departureStation, arrivalStation, carriageCount);
+        return String.format("%s, цена: %.0f руб., время поездки: %.1f ч, от: %s, до: %s, вагонов: %d, топлива: %.2f%%",
+                super.toString(), price, travelTime, departureStation, arrivalStation, carriageCount, getFuelPercentage());
     }
 }
